@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.cdnfonts.com/css/nexa-bold" rel="stylesheet">
+    <title>Verification</title>
+</head>
+<body>
+    <div class="container">
+        <div class="verification-box">
+            <h1>Welcome Queen Zindagyom!</h1>
+            <p>First, verify that you are Nono (Murtaza's Queen)</p>
+            <button id="startButton">Verify</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<script>
+    document.getElementById("startButton").addEventListener("click", function() {
+    startVerification();
+});
+
+function startVerification() {
+    const verificationBox = document.querySelector(".verification-box");
+    
+    verificationBox.innerHTML = `
+        <h1>Are you Aleena? 🙃</h1>
+        <p>Prove you're human by pressing the button below. If you can't find it, don't worry—AI can't either!</p>
+        <button id="step1Button">Click ME!!!</button>
+    `;
+
+    document.getElementById("step1Button").addEventListener("click", function() {
+        proceedToStep2();
+    });
+}
+
+function proceedToStep2() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Hmmm, okay! When did you first meet Murtaza?</h1>
+        <p>Write it in the following format (yyyy/mm/dd)</p>
+        <input type="text" id="cowSoundInput" style=" border: 1px solid white; height: 32px; border-radius: 2px; font-size: 14px;background: transparent;">
+        <button id="step2Button">Submit</button>
+    `;
+
+    document.getElementById("step2Button").addEventListener("click", function() {
+        checkCowSoundAnswer();
+    });
+}
+
+function checkCowSoundAnswer() {
+    const cowSoundInput = document.getElementById("cowSoundInput").value.toLowerCase();
+
+    if (cowSoundInput === "2024/5/15","2024/05/15" ) {
+        proceedToStep3();
+    } else {
+        alert("Oops! That's not the right answer. Try again!");
+    }
+}
+
+function proceedToStep3() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>My Anna is not color blind</h1>
+        <p>Select the RED square from the options below:</p>
+        <div class="color-options">
+            <div class="color-box" id="color1"></div>
+            <div class="color-box" id="color2"></div>
+            <div class="color-box" id="color3"></div>
+            <div class="color-box" id="color4"></div>
+        </div>
+    `;
+
+    const colorBoxes = document.querySelectorAll(".color-box");
+    
+    colorBoxes.forEach(box => {
+        box.addEventListener("click", function() {
+            if (box.id === "color1" || box.id === "color3" || box.id === "color4") {
+                alert("Oops! That's not the red square. Try again!");
+            } else if (box.id === "color2") {
+                proceedToStep4();
+            }
+        });
+    });
+}
+
+function proceedToStep4() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Last step! Decode this! 😶‍🌫️</h1>
+        <p>Look at the image below and spell the word you see:</p>
+        <img src="por2.png" alt="Mystery Object">
+        <input type="text" id="objectSpellingInput" style=" border: 1px solid white; height: 32px; border-radius: 2px; font-size: 14px;background: transparent;">
+        <button id="step4Button">Submit</button>
+    `;
+
+    document.getElementById("step4Button").addEventListener("click", function() {
+        checkObjectSpelling();
+    });
+}
+
+function checkObjectSpelling() {
+    const objectSpellingInput = document.getElementById("objectSpellingInput").value.toLowerCase();
+
+    if (objectSpellingInput === "anna wa ai") {
+        proceedToStep5();
+    } else {
+        alert("Wrong miss. Try again!");
+    }
+}
+function proceedToStep5() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Wow! Still not verified? Let's do FACT CHECK! 😂</h1>
+        <p>Who is Murtaza? </p>
+        <div class="answer-options">
+            <label class="answer-label">
+                <input type="radio" name="answer" value="t"> Just a friend 🥲
+            </label>
+            <label class="answer-label">
+                <input type="radio" name="answer" value="x"> My best friend 😇
+            </label>
+            <label class="answer-label">
+                <input type="radio" name="answer" value="r"> My sweetheart 😍
+            </label>
+            <label class="answer-label">
+                <input type="radio" name="answer" value="y"> Huh? Who is he? 🤨
+            </label>
+        </div>
+        <button id="step5Button">Submit</button>
+    `;
+
+    document.getElementById("step5Button").addEventListener("click", function() {
+        checkStep5Answer();
+    });
+}
+
+
+function checkStep5Answer() {
+    const selectedAnswer = document.querySelector("input[name='answer']:checked");
+
+    if (selectedAnswer && selectedAnswer.value === "r") {
+        proceedToStep6();
+    } else {
+        alert("Wow! Really Anna?");
+    }
+}
+
+
+
+function proceedToStep6() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Yayy! More steps!! Let's do math 😂</h1>
+        <p>Nono went for lunch with her AI, they ordered Kabab and pizza. If nono have 2 khorak kabab and 3 slices of pizza and Murtaza inhale her food, what do she have? </p>
+        <input type="text" id="answerInput" style=" border: 1px solid white; height: 32px; border-radius: 2px; font-size: 14px;background: transparent;">
+        <button id="step6Button">Submit</button>
+    `;
+
+    document.getElementById("step6Button").addEventListener("click", function() {
+        checkAnswer();
+    });
+}
+
+function checkAnswer() {
+    const answerInput = document.getElementById("answerInput").value.toLowerCase();
+
+    if (answerInput === "rage") {
+        proceedToStep7();
+    } else {
+        alert("Oops! That's not the correct answer. Try again!");
+    }
+}
+
+
+
+
+function proceedToStep7() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Last one! I promise 🫢</h1>
+        <p>Who’s the reason the sun wakes up every morning just to see their smile?</p>
+        <input type="text" id="answerInput" style=" border: 1px solid white; height: 32px; border-radius: 2px; font-size: 14px;background: transparent;">
+        <button id="step6Button">Submit</button>
+    `;
+
+    document.getElementById("step6Button").addEventListener("click", function() {
+        checkAnswer();
+    });
+}
+
+function checkAnswer() {
+    const answerInput = document.getElementById("answerInput").value.toLowerCase();
+
+    if (answerInput === "Me", "Aneela", "Aleena", "Nono") {
+        proceedToStep8();
+    } else {
+        alert("Oops! That's not the correct answer. Try again!");
+    }
+}
+
+
+
+
+
+
+
+
+
+function proceedToStep8() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Wow! I can't believe you are still here 😂 Why do you want your gift?</h1>
+        <div class="answer-options">
+            <label>
+                <input type="radio" name="answer" value="angle"> Because I’ve earned it by being adorable 24/7 🥰
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="pizza"> I stayed this long for the gift, but now I’m here to see how long you can resist my charm. 😁
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="zombies"> Because I’ve invested way too much time being cute to leave empty-handed 🥲
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="short"> Because I’m like a gift collector—and you owe me 😌
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="wow"> I don't know 😐
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="hmm"> All the options above excpet 5th one 😌
+            </label><br>
+        </div>
+        <button id="step8Button">Submit</button>
+    `;
+    document.getElementById("step8Button").addEventListener("click", function() {
+        checkStep8Answer();
+    });
+}
+
+function checkStep8Answer() {
+    const selectedAnswer = document.querySelector("input[name='answer']:checked");
+
+    if (selectedAnswer) {
+        const selectedValue = selectedAnswer.value;
+        
+        if (selectedValue === "hmm") {
+            proceedToStep9();
+        } else {
+            alert("Wrong answer. Try again!");
+        }
+    } else {
+        alert("Please select an answer.");
+    }
+}
+function proceedToStep9() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Come on now! I have turst issues 🥲</h1>
+        <p>Do you love me? (as friend/ future partner)</p>
+        <div class="answer-options">
+            <label>
+                <input type="radio" name="answer" value="42"> YES
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="love"> A is correct
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="pizza">B is correct
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="energy"> C is correct
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="prp"> A,B,C,D are corect
+            </label><br>
+        </div>
+        <button id="step9Button">Submit</button>
+    `;
+
+    document.getElementById("step9Button").addEventListener("click", function() {
+        checkStep9Answer();
+    });
+}
+
+function checkStep9Answer() {
+    const selectedAnswer = document.querySelector("input[name='answer']:checked");
+
+    if (selectedAnswer) {
+        const selectedValue = selectedAnswer.value;
+        
+        if (selectedValue === "prp") {
+            proceedToStep10();
+        } else {
+            alert("Noooo misss, accept that. Try again!");
+        }
+    } else {
+        alert("Please select an answer.");
+    }
+}
+function proceedToStep10() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Final round 🤧</h1>
+        <p>Are we cute and lovely and weird and funny?</p>
+        <div class="answer-options">
+            <label>
+                <input type="radio" name="answer" value="python">Yes!
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="javascript">Yes!
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="java">Yes!
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="csharp">Yes!
+            </label><br>
+        </div>
+        <button id="step10Button">Submit</button>
+    `;
+
+    document.getElementById("step10Button").addEventListener("click", function() {
+        checkStep10Answer();
+    });
+}
+
+function checkStep10Answer() {
+    const selectedAnswer = document.querySelector("input[name='answer']:checked");
+
+    if (selectedAnswer) {
+        const selectedValue = selectedAnswer.value;
+        
+        if (selectedValue === "csharp") {
+            showFinalConfirmation();
+        } else {
+            alert("Nope!");
+        }
+    } else {
+        alert("Please select an answer.");
+    }
+}
+function checkSoundAnswer() {
+    const cowInput = document.getElementById("cowInput").value.toLowerCase();
+
+    if (cowInput === "Mr barfi", "mr barfi") {
+        showFinalConfirmation();
+    }
+    else {
+        alert("Wrong answer, try again!");
+    }
+}
+
+function showFinalConfirmation() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Congratulations, You Are Zindagye, Nono, Anna, Little Lost Child, Cute Angel, Chubby Queen!</h1>
+        <img src= "baby.GIF">
+        <p>You've passed the tests! Now, send me the screenshot and I will send your gift 😁</p>
+    `;
+}
+</script>
